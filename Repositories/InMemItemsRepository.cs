@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using Catalog1.Entities;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace Catalog1.Repositories
 {
-    public class InMemItemsRepository
+    
+
+    public class InMemItemsRepository : IItemsRepository
     {
         private readonly List<Item> items = new()
         {
@@ -13,14 +17,39 @@ namespace Catalog1.Repositories
             new Item{Id = Guid.NewGuid(),Name = "Bronze Shield", Price = 18, CreatedDate = DateTimeOffset.UtcNow}
         };
 
-        public IEnumerable<Item> GetItems()
+        public async Task <IEnumerable<Item>> GetItemsAsync()
         {
-            return items;
+            return await Task.FromResult(items);
         }
 
-        public Item GetItem(Guid id)
+        public async Task <Item> GetItemAsync(Guid id)
         {
-            return items.Where(item => item.Id == id).SingleOrDefault();
+            var item = items.Where(item => item.Id == id).SingleOrDefault();
+            return await Task.FromResult(item);
+        }
+
+        public async void CreateItemAsync(Item item){
+            items.Add(item);
+            await Task.CompletedTask;
+        }
+
+        public async Task UpdateItemAsync(Item item)
+        {
+            var index = items.FindIndex(existingItem => existingItem.Id == item.Id);
+            items[index] = item;
+            await Task.CompletedTask;
+        }
+
+        public async Task DeleteItemAsync(Guid id)
+        {
+            var index = items.FindIndex(existingItem => existingItem.Id == id);
+            items.RemoveAt(index);
+            await Task.CompletedTask;
+        }
+
+        Task IItemsRepository.CreateItemAsync(Item item)
+        {
+            throw new NotImplementedException();
         }
     }
 }
