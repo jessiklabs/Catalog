@@ -9,7 +9,7 @@ namespace Catalog1.Settings
         { 
             get
             {
-                return $"mongodb://{Host}:{Port}";
+                return $"mongodb://{User}:{Password}@{Host}:{Port}";
             } 
         }
       
