@@ -7,7 +7,14 @@ namespace Catalog1.Dtos
         [Required]
         public string Name { get; init; }
         [Required]
-        [Range(1,1000)]
-        public decimal Price { get; init; }
+        
+        public decimal Age { get; init; }
+        [Required]
+        public string Birthplace {get; init;}
+        [Required]
+        public string Element{get; init;}
+        
+        public string Description{get; init;}
+        public string Bio{get;init;}
     }
 }

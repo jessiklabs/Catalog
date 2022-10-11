@@ -9,7 +9,11 @@ namespace Catalog1
             return new ItemDto{
                 Id = item.Id,
                 Name = item.Name,
-                Price = item.Price,
+                Age = item.Age,
+                Birthplace = item.Birthplace,
+                Element = item.Element,
+                Description = item.Description,
+                Bio = item.Bio,
                 CreatedDate = item.CreatedDate
             };
         }
