@@ -51,6 +51,7 @@ namespace Catalog1.Controllers
                 Element = itemDto.Element,
                 Description = itemDto.Description,
                 Bio = itemDto.Bio,
+                ImgUrl = itemDto.ImgUrl,
                 CreatedDate = DateTimeOffset.UtcNow
             };
 
@@ -75,7 +76,8 @@ namespace Catalog1.Controllers
                 Birthplace = itemDto.Birthplace,
                 Element = itemDto.Element,
                 Description = itemDto.Description,
-                Bio = itemDto.Bio
+                Bio = itemDto.Bio,
+                ImgUrl = itemDto.ImgUrl
             };
 
             await repository.UpdateItemAsync(updatedItem);

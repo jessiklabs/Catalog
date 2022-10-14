@@ -14,6 +14,7 @@ namespace Catalog1.Dtos
         
         public string Description{get; init;}
         public string Bio{get;init;}
-        public DateTimeOffset CreatedDate { get; set; }
+        public string ImgUrl{get;init;}
+        public DateTimeOffset CreatedDate { get; init; }
     }
 }

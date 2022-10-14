@@ -14,6 +14,7 @@ namespace Catalog1
                 Element = item.Element,
                 Description = item.Description,
                 Bio = item.Bio,
+                ImgUrl = item.ImgUrl,
                 CreatedDate = item.CreatedDate
             };
         }

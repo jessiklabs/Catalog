@@ -16,5 +16,6 @@ namespace Catalog1.Dtos
         
         public string Description{get; init;}
         public string Bio{get;init;}
+        public string ImgUrl{get;init;}
     }
 }

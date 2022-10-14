@@ -1,7 +1,11 @@
 const uri = 'items';
 let todos = [];
 
-
+const body = document.getElementById("body");
+body.setAttribute("style", "background-image: url('/images/swordandboardlogo.png');");
+body.style.backgroundSize = "300px 300px";
+//body.setAttribute("style", "background-size: 300px");
+//body.setAttribute("style", "background-attachment: fixed");
 
 function getItems() {
 
@@ -18,6 +22,7 @@ function addItem() {
   const addElementTextbox = document.getElementById('add-element');
   const addDescriptionTextbox = document.getElementById('add-description');
   const addBiographyTextbox = document.getElementById('add-bio');
+  const addUrlTextbox = document.getElementById('add-url');
 
   const item = {
     name: addNameTextbox.value.trim(),
@@ -26,8 +31,8 @@ function addItem() {
     element: addElementTextbox.value.trim(),
     description: addDescriptionTextbox.value.trim(),
     bio: addBiographyTextbox.value.trim(),
-
-  };
+    imgurl: addUrlTextbox.value.trim()
+};
 
   fetch(uri, {
     method: 'POST',
@@ -46,6 +51,7 @@ function addItem() {
       addElementTextbox.value = '';
       addDescriptionTextbox.value = '';
       addBiographyTextbox.value = '';
+      addUrlTextbox.value = '';
 
 
     })
@@ -79,6 +85,7 @@ function displayEditForm(event) {
   document.getElementById('edit-element').value = item.element;
   document.getElementById('edit-description').value = item.description;
   document.getElementById('edit-bio').value = item.bio;
+  document.getElementById('edit-url').value = item.url;
   document.getElementById('edit-id').value = item.id;
   document.getElementById('editForm').style.display = 'block';
 }
@@ -93,6 +100,7 @@ function updateItem() {
     element: document.getElementById('edit-element').value.trim(),
     description: document.getElementById('edit-description').value.trim(),
     bio: document.getElementById('edit-bio').value.trim(),
+    imgurl: document.getElementById('edit-url').value.trim()
   };
   fetch(`${uri}/${itemId}`, {
     method: 'PUT',
@@ -114,7 +122,7 @@ function closeInput() {
 
 function _displayCount(itemCount) {
   //if statement (ternary statement) condition ? if : else
-  const name = (itemCount === 1) ? 'catalog' : 'catalogs';
+  const name = (itemCount === 1) ? 'character' : 'characters';
   // What the ternary statement is doing:
   // let name;
   // if(itemCount === 1){
@@ -160,28 +168,41 @@ function _displayItems(data) {
     let tr = tBody.insertRow();
 
     let td1 = tr.insertCell(0);
-    let nameNode = document.createTextNode(item.name);
-    td1.appendChild(nameNode);
+    let link = document.createElement("a");
+    let proImg = document.createElement("img");
+    if(item.description == "" || item.description == null){
+      proImg.src = "/images/silho.png";
+    } else {
+      proImg.src = item.description;
+    }
+    
+    
+    proImg.setAttribute("id", "images");
+    td1.appendChild(proImg);
+
 
     let td2 = tr.insertCell(1);
-    let ageNode = document.createTextNode(item.age);
-    td2.appendChild(ageNode);
+    let nameNode = document.createTextNode(item.name);
+    td2.appendChild(nameNode);
 
     let td3 = tr.insertCell(2);
-    let birthplaceNode = document.createTextNode(item.birthplace);
-    td3.appendChild(birthplaceNode);
+    let ageNode = document.createTextNode(item.age);
+    td3.appendChild(ageNode);
 
     let td4 = tr.insertCell(3);
-    let elementNode = document.createTextNode(item.element);
-    td4.appendChild(elementNode);
+    let birthplaceNode = document.createTextNode(item.birthplace);
+    td4.appendChild(birthplaceNode);
 
     let td5 = tr.insertCell(4);
-    let descriptionNode = document.createTextNode(item.description);
-    td5.appendChild(descriptionNode);
+    let elementNode = document.createTextNode(item.element);
+    td5.appendChild(elementNode);
+
+    
 
     let td6 = tr.insertCell(5);
     let bioNode = document.createTextNode(item.bio);
     td6.appendChild(bioNode);
+    
 
     let td7 = tr.insertCell(6);
     td7.appendChild(editButton);
