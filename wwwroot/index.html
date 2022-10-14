@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sword and Board Character Database</title>
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+    
+</head>
+<body id ="body">
+    
+    <h1 id="top">Sword and Board Character Database</h1>
+   
+    <div class ="charboxes"> 
+        <div class="charbox">
+             <h3>Add Character</h3>
+        <form id="addchar"action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <div class="form-group">
+            Name: <input type="text" id="add-name" placeholder="Name"><br>
+            Age: <input type="text" id="add-age" placeholder="Age"><br>
+            Birthplace: <input type="text" id="add-birthplace" placeholder="Birthplace"><br>
+            Element: <input type="text" id="add-element" placeholder="Element"><br>
+            Info (Optional): <textarea form="addchar"id="add-bio" cols="35" rows="10" placeholder="Additional character information goes here..."></textarea><br>
+            Profile Image URL (Optional): <input type="url" id="add-description" placeholder="URL"><br>
+            
+            <input type="hidden" id="add-url" placeholder="Profile Image URL"><br> 
+        <input type="submit" value="Add">
+        </div>
+        
+        
+        </form>
+        </div>
+       
+
+        <!--
+        div: {
+            atrributes: [ id: "editForm", class: "hello" ],
+            children: [ h3: {}, form: {} ]
+        }
+
+
+        h3: {
+            attributes: "",
+            chlidren
+        }
+
+        div.children[0]
+        div.attributes[0]
+     --><div class="charbox">
+
+        </div>
+        <div id="editForm" class="hello">
+        
+            <h3>Edit Character</h3>
+            <form id="editchar" action="javascript:void(0);" onsubmit="updateItem()">
+                <input type="hidden" id="edit-id">
+                <label for="edit-name">Name: </label>
+                <input type="text" id="edit-name"><br>
+                <label for="edit-age">Age: </label>
+                <input type="text" id="edit-age"><br>
+                <label for="edit-birthplace">Birthplace: </label>
+                <input type="text" id="edit-birthplace"><br>
+                <label for="edit-element">Element: </label>
+                <input type="text" id="edit-element"><br>
+            
+                <label for="edit-bio">Character Information (Optional): </label>
+                <textarea form="editchar"id="edit-bio" cols="35" rows="10"></textarea><br>
+                <label for="edit-description">Profile Image URL(Optional): </label>
+                <input type="url" id="edit-description"><br>
+            
+            
+                <input type="hidden" id="edit-url"><br>
+                <input type="submit" value="Save">
+                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+
+    </div>
+    
+    <p id="counter"> </p>
+
+    <table>
+        <tr>
+            <th>Image<br>(hover to zoom)</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Birthplace</th>
+            <th>Element</th>
+            <th>Character Info</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table><br>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+    <footer>Copyright &copy 2022 JessiKLabs.  All rights reserved. <a href="mailto:jessica@jessiklabs.com"> Contact Us!</footer>
+</body>
+
+</html>

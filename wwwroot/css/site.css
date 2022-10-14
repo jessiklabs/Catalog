@@ -1,0 +1,75 @@
+input[type='submit'], button, [aria-label] {
+    cursor: pointer;
+}
+.charbox{
+    display:flex;
+    flex-direction:column;
+    background-color: rgb(231, 223, 202);
+    padding:30px;
+    
+}
+
+#images{
+    height:150px;
+    width:150px;
+    object-fit:contain;
+   
+}
+img:hover{
+    transition-delay:.5s;
+    transition-duration: 5s;
+    transform: scale(3);
+    float:right;
+    position:absolute;
+    left: 50px;
+}
+
+body{
+    background-color: #aab6ea;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-size: 300px;
+
+}
+
+#top{
+    background-color: #4793a7;
+    text-align: center;
+    
+    
+    
+}
+/*.bio{
+ width: 400px;
+ height:400px;
+}*/
+.charboxes{
+    display:flex;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+    
+   
+}
+
+#editForm {
+    display: none;
+    background-color: rgb(231, 223, 202);
+    padding:30px;
+}
+
+table {
+    font-family: Arial, sans-serif;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #4793a7;
+    padding: 5px;
+}
+
+td {
+    border: 1px solid;
+    padding: 5px;
+    background-color:aliceblue;
+}
